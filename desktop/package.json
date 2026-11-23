@@ -1,0 +1,10 @@
+{
+  "name": "pawgress-desktop",
+  "productName": "Pawgress",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pawgress planner and always-on-top desktop companion",
+  "main": "main.cjs",
+  "scripts": {"start": "electron .", "check": "node --check main.cjs && node --check preload.cjs"},
+  "devDependencies": {"electron": "45.4.1"}
+}

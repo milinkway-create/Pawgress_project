@@ -1,0 +1,7 @@
+.git
+.env
+.venv
+*.db*
+node_modules
+work
+desktop
