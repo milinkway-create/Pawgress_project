@@ -6,12 +6,12 @@ from app.database import initial_state
 def test_growth_rewards_and_reopen(project_data):
     s=initial_state();p=new_project(s,project_data)
     apply_action(s,p['id'],'complete_task','a')
-    assert p['treats']==15 and p['stage']==0
+    assert p['treats']==15 and p['stage']==0 and p['growth_earned']==30
     apply_action(s,p['id'],'reopen_task','a');apply_action(s,p['id'],'complete_task','a')
-    assert p['treats']==15
-    apply_action(s,p['id'],'complete_task','b');assert p['stage']==1
+    assert p['treats']==15 and p['growth_earned']==30
+    apply_action(s,p['id'],'complete_task','b');assert p['stage']==1 and p['growth_earned']==90
     apply_action(s,p['id'],'complete_task','c');assert p['stage']==2
-    assert p['treats']==45
+    assert p['growth_earned']==p['growth_total']==120 and p['treats']==45
     apply_action(s,p['id'],'reopen_task','c');assert p['stage']==2
 
 def test_dependency_completion_and_reopen(project_data):

@@ -117,7 +117,8 @@ def test_feed_balance_and_focus(client,project_data):
     assert client.post(f"/api/projects/{p['id']}/focus/start").status_code==200
     assert client.post(f"/api/projects/{p['id']}/focus/start").status_code==422
     assert client.post(f"/api/projects/{p['id']}/focus/stop").status_code==200
-    assert client.get('/api/state').json()['projects'][0]['treats']==0
+    saved=client.get('/api/state').json()['projects'][0]
+    assert saved['treats']==0 and saved['growth_earned']==0 and saved['stage']==0
 
 def test_species_and_foreign_memory_validation(client,project_data):
     project_data['species']='rabbit'
